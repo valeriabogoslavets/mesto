@@ -1,13 +1,13 @@
 .popup__input {
-width: 358px ;
-border: none;
-margin: auto;
-display: block;
-font-weight: 400;
-font-size: 14px;
-line-height: 17px;
-outline: none;
-padding: 0 0 13px 0;
+  width: 358px;
+  border: none;
+  margin: auto;
+  display: block;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  outline: none;
+  padding: 0 0 13px 0;
 }
 
 @media screen and (max-width: 767px) {
