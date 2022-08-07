@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./pages/index.css">
+    <title>Mesto Россия</title>
+</head>
+
+<body class="page">
+    <header class="header">
+        <img class="header__logo" src="./images/logo.svg" alt="Логотип с названием сайта Mesto Россия">
+    </header>
+    <main class="content">
+        <section class="profile">
+            <img class="profile__photo" src="./images/image.jpg" alt="Фото в профиле пользователя">
+            <div class="profile__info">
+                <h1 class="profile__name">Жак-Ив Кусто</h1>
+                <button type="button" class="profile__edit-button"></button>
+                <p class="profile__status">Исследователь океана</p>
+            </div>
+            <button type="button" class="profile__add-button"></button>
+        </section>
+        <section class="elements">
+            <ul class="element">
+                <li class="element__list"><img class="element__image" src="./images/karachaevsk.jpg"
+                        alt="Фото замка в Карачаевске">
+                    <div class="element__info">
+                        <h2 class="element__title">Карачаевск</h2>
+                        <button class="element__button" type="button"></button>
+                    </div>
+                </li>
+                <li class="element__list"><img class="element__image" src="./images/Fiolent.jpg"
+                        alt="Фото мыса Фиолент в Крыму">
+                    <div class="element__info">
+                        <h2 class="element__title">Фиолент</h2>
+                        <button class="element__button element__button_active" type="button"></button>
+                    </div>
+                </li>
+                <li class="element__list"><img class="element__image" src="./images/elbrus.jpg" alt="Фото горы Эльбрус">
+                    <div class="element__info">
+                        <h2 class="element__title">Эльбрус</h2>
+                        <button class="element__button" type="button"></button>
+                    </div>
+                </li>
+                <li class="element__list"><img class="element__image" src="./images/dombai.jpg" alt="Фото Домбай">
+                    <div class="element__info">
+                        <h2 class="element__title">Домбай</h2>
+                        <button class="element__button" type="button"></button>
+                    </div>
+                </li>
+                <li class="element__list"><img class="element__image" src="./images/Dagestan.jpg" alt="Фото Дагестана">
+                    <div class="element__info">
+                        <h2 class="element__title">Дагестан</h2>
+                        <button class="element__button" type="button"></button>
+                    </div>
+                </li>
+                <li class="element__list"><img class="element__image" src="./images/Sochi.jpg" alt="Фото моря в Сочи">
+                    <div class="element__info">
+                        <h2 class="element__title">Сочи</h2>
+                        <button class="element__button" type="button"></button>
+                    </div>
+                </li>
+            </ul>
+        </section>
+    </main>
+    <footer class="footer">
+        <p class="footer__text">&copy; 2022 Mesto Russia</p>
+    </footer>
+    <div class="popup">
+        <div class="popup__container">
+            <form class="popup__form">
+                <h2 class="popup__title">Редактировать профиль</h2>
+                <input class="popup__input popup__input_border  popup__input_username" name="Username">
+                <input class="popup__input popup__input_border  popup__input_aboutme" name="Abounme">
+                <button class="popup__button" type="submit">Сохранить</button>
+            </form>
+            <button class="popup__button-close" type="button"></button>
+        </div>
+    </div>
+
+    <script src="./script/script.js"></script>
+</body>
+
+</html>
