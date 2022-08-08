@@ -23,7 +23,7 @@ let popupForm = document.querySelector('.popup__form');
 function formSubmitHandler(evt) {
     evt.preventDefault();
     profileName.textContent = popupInputUserName.value;
-    profileStatus.textContent = popupAboutMe;
+    profileStatus.textContent = popupAboutM.value;
     popupClose()
 }
 
