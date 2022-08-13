@@ -1,8 +1,10 @@
 .element__list {
-  width: 282px;
-  height: 360px;
+  max-width: 282px;
   border-radius: 10px;
   background-color: #FFFFFF;
   overflow: hidden;
   list-style: none;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }

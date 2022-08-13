@@ -11,14 +11,21 @@
   padding: 0;
   border: none;
   border-radius: 2px;
+  cursor: pointer;
+  margin-bottom: 37px;
 }
+
+.popup__button:hover {
+  opacity: 0.8;
+}
+
 
 @media screen and (max-width: 767px) {
   .popup__button {
     width: 238px;
     height: 46px;
     font-size: 14px;
-    line-height: 16.94px;
-    margin: 45px auto 0;
+    line-height: 17px;
+    margin: 45px auto 25px;
   }
 }

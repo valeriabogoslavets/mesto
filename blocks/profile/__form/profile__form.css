@@ -1,0 +1,5 @@
+.profile__form {
+  display: flex;
+  position: relative;
+  align-items: baseline;
+}
