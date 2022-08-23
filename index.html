@@ -26,46 +26,6 @@
             <button type="button" class="profile__add-btn"></button>
         </section>
         <section class="elements">
-            <ul class="element">
-                <li class="element__list"><img class="element__image" src="./images/karachaevsk.jpg"
-                        alt="Фото замка в Карачаевске">
-                    <div class="element__info">
-                        <h2 class="element__title">Карачаевск</h2>
-                        <button class="element__btn" type="button"></button>
-                    </div>
-                </li>
-                <li class="element__list"><img class="element__image" src="./images/Fiolent.jpg"
-                        alt="Фото мыса Фиолент в Крыму">
-                    <div class="element__info">
-                        <h2 class="element__title">Мыс Фиолент</h2>
-                        <button class="element__btn" type="button"></button>
-                    </div>
-                </li>
-                <li class="element__list"><img class="element__image" src="./images/elbrus.jpg" alt="Фото горы Эльбрус">
-                    <div class="element__info">
-                        <h2 class="element__title">Эльбрус</h2>
-                        <button class="element__btn" type="button"></button>
-                    </div>
-                </li>
-                <li class="element__list"><img class="element__image" src="./images/dombai.jpg" alt="Фото Домбай">
-                    <div class="element__info">
-                        <h2 class="element__title">Домбай</h2>
-                        <button class="element__btn" type="button"></button>
-                    </div>
-                </li>
-                <li class="element__list"><img class="element__image" src="./images/Dagestan.jpg" alt="Фото Дагестана">
-                    <div class="element__info">
-                        <h2 class="element__title">Дагестан</h2>
-                        <button class="element__btn" type="button"></button>
-                    </div>
-                </li>
-                <li class="element__list"><img class="element__image" src="./images/Sochi.jpg" alt="Фото моря в Сочи">
-                    <div class="element__info">
-                        <h2 class="element__title">Сочи</h2>
-                        <button class="element__btn" type="button"></button>
-                    </div>
-                </li>
-            </ul>
         </section>
     </main>
     <footer class="footer">
@@ -93,6 +53,16 @@
             <button class="popup__button-close" type="button"></button>
         </div>
     </div>
+    <template id="cards">
+    <div class="place">
+        <img class="place__image" alt="Карточка места">
+        <button class="place__button-delete" type="button"></button>
+        <div class="place__name">
+            <h2 class="place__title"></h2>
+            <button class="place__like" type="button"></button>
+        </div>
+    </div>
+    </template>
     <script src="./script/index.js"></script>
 </body>
 
