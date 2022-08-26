@@ -1,0 +1,17 @@
+.place__button-like {
+    width: 22px;
+    height: 19px;
+    background-image: url(../../../images/heard.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    padding: 0;
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+    transition: opacity 0.2s;
+  }
+  
+  .place__button-like:hover {
+   opacity: 0.6;
+  }
+  
