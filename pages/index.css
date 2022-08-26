@@ -19,12 +19,6 @@
 @import url(../blocks/place/__name/place__name.css);
 @import url(../blocks/place/__title/place__title.css);
 @import url(../blocks/elements/elements.css);
-@import url(../blocks/element/element.css);
-@import url(../blocks/element/__image/element__image.css);
-@import url(../blocks/element/__info/element__info.css);
-@import url(../blocks/element/__title/element__title.css);
-@import url(../blocks/element/__list/element__list.css);
-@import url(../blocks/element/__btn/element__btn.css);
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__text/footer.__text.css);
 @import url(../blocks/popup/popup.css);
