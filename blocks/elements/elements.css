@@ -3,7 +3,6 @@
   display: grid;
   grid-template-columns: repeat(3, 282px);
   gap: 20px 17px;
-  margin: 0;
   padding: 0;
   margin: 46px auto 0;
 }
