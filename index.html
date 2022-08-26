@@ -53,15 +53,24 @@
             <button class="popup__button-close" type="button"></button>
         </div>
     </div>
-    <template id="cards">
-    <div class="place">
-        <img class="place__image" alt="Карточка места">
-        <button class="place__button-delete" type="button"></button>
-        <div class="place__name">
-            <h2 class="place__title"></h2>
-            <button class="place__button-like" type="button"></button>
+    <div class="popup popup_type_image">
+        <div class="popup__content">
+            <figure class="popup__image-container">
+                <button class="popup__button-close" type="button"></button>
+                <img class="popup__image" src="#" alt="Картинка">
+                <figcaption class="popup__image-lable"></figcaption>
+            </figure>
         </div>
     </div>
+    <template id="cards">
+        <div class="place">
+            <img class="place__image" alt="Карточка места">
+            <button class="place__button-delete" type="button"></button>
+            <div class="place__name">
+                <h2 class="place__title"></h2>
+                <button class="place__button-like" type="button"></button>
+            </div>
+        </div>
     </template>
     <script src="./script/index.js"></script>
 </body>
