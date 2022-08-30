@@ -54,27 +54,27 @@ function createCard(element) {
     const likeButtonElement = newPlaceElement.querySelector('.place__button-like');
     const deleteButtonElement = newPlaceElement.querySelector('.place__button-delete');
 
-imagePlace.src = element.link;
-imagePlace.alt = element.name;
-titlePlace.textContent = element.name;
+    imagePlace.src = element.link;
+    imagePlace.alt = element.name;
+    titlePlace.textContent = element.name;
 
-likeButtonElement.addEventListener('click', function (evt) {
-    evt.target.classList.toggle('place__button-like_active');
-});
+    likeButtonElement.addEventListener('click', function (evt) {
+        evt.target.classList.toggle('place__button-like_active');
+    });
 
-deleteButtonElement.addEventListener('click', function () {
-    newPlaceElement.remove();
-});
+    deleteButtonElement.addEventListener('click', function () {
+        newPlaceElement.remove();
+    });
 
-imagePlace.addEventListener('click', function (evt) {
-    openPopup(popupTypeImage);
-    popupImageElement.src = element.link;
-    popupImageElement.alt = element.name;
-    popupImageLable.textContent = element.name;
-}); 
+    imagePlace.addEventListener('click', function (evt) {
+        openPopup(popupTypeImage);
+        popupImageElement.src = element.link;
+        popupImageElement.alt = element.name;
+        popupImageLable.textContent = element.name;
+    });
 
 
-return newPlaceElement;
+    return newPlaceElement;
 };
 
 
@@ -108,12 +108,7 @@ profileAddButton.addEventListener('click', function () {
 function closePopup(element) {
     element.classList.remove('popup_opened')
 };
-popupTypeEdit.querySelector('.popup__button-close').addEventListener('click', function () {
-    closePopup(popupTypeEdit)
-});
-popupTypeAdd.querySelector('.popup__button-close').addEventListener('click', function () {
-    closePopup(popupTypeAdd)
-});
+
 
 
 // функции формы
