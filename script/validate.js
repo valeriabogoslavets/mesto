@@ -7,7 +7,6 @@ function showInputError(form, input, message, config) {
     formError.textContent = message;
 }
 
-
 //функция удаления класса с ошибкой
 function hideInputError(form, input, config) {
     const formError = form.querySelector(`.${input.id}-error`);
@@ -15,7 +14,6 @@ function hideInputError(form, input, config) {
     formError.classList.remove(config.errorClass);
     formError.textContent = '';
 }
-
 
 //Функция которая проверяет валидность поля
 function isValid(form, input, config) {
