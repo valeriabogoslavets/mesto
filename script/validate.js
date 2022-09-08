@@ -43,8 +43,6 @@ function toggleButtonState(inputList, button, config) {
     }
 };
 
-
-
 //Функция нахождения инпутов
 function setHendlers(form, config) {
     const inputList = Array.from(form.querySelectorAll(config.inputSelector));
