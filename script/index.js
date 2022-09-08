@@ -7,12 +7,17 @@ const cardsTemplate = document.querySelector('#cards').content;
 // попап
 const popupTypeEdit = document.querySelector('.popup_type_edit');
 const popupTypeAdd = document.querySelector('.popup_type_add');
+<<<<<<< HEAD
 const popupInputUserName = document.querySelector('.popup__input_type_username');
 const popupAboutMe = document.querySelector('.popup__input_type_aboutme');
+=======
+>>>>>>> develop
 const popupFormEdit = document.querySelector('.popup__form_edit');
+const userNameInput = popupFormEdit.querySelector('#username');
+const aboutMeInput = popupFormEdit.querySelector('#aboutme');
 const popupFormAdd = document.querySelector('.popup__form_add');
-const popupInputTypePlace = document.querySelector('.popup__input_type_place');
-const popupInputTypeLink = document.querySelector('.popup__input_type_link');
+const popupInputTypePlace = popupFormAdd.querySelector('#place');
+const popupInputTypeLink = popupFormAdd.querySelector('#link');
 const popupTypeImage = document.querySelector('.popup_type_image');
 const popupImageElement = document.querySelector('.popup__image');
 const popupImageLable = document.querySelector('.popup__image-lable');
@@ -44,6 +49,14 @@ const initialCards = [
         link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
     }
 ];
+const validationConfig = {
+    formSelector: '.popup__form',
+    inputSelector: '.popup__input',
+    submitButtonSelector: '.popup__button',
+    inactiveButtonClass: 'popup__button_disabled',
+    inputErrorClass: 'popup__input_type_error',
+    errorClass: 'popup__error_visible'
+};
 
 // функция создания и добавления карточек
 
@@ -96,26 +109,52 @@ closeButtons.forEach((button) => {
 
 function openPopup(element) {
     element.classList.add('popup_opened');
+    element.addEventListener('click', handlePopupCloseAnyPlace)
+    document.addEventListener('keydown', handlePopupCloseKey);
 };
 profileEditButton.addEventListener('click', function () {
     openPopup(popupTypeEdit);
+<<<<<<< HEAD
     popupInputUserName.value = profileName.textContent;
     popupAboutMe.value = profileStatus.textContent;
+=======
+    userNameInput.value = profileName.textContent;
+    aboutMeInput.value = profileStatus.textContent;
+>>>>>>> develop
 });
 profileAddButton.addEventListener('click', function () {
     openPopup(popupTypeAdd);
 });
 function closePopup(element) {
     element.classList.remove('popup_opened')
+    element.removeEventListener('click', handlePopupCloseAnyPlace)
+    document.removeEventListener('keydown', handlePopupCloseKey)
 };
 
+<<<<<<< HEAD
+=======
+
+//функция закрытия попап через Escape
+const handlePopupCloseKey = (evt) => {
+    if (evt.key === 'Escape') {
+        const popupActive = document.querySelector('.popup_opened');
+        closePopup(popupActive);
+    }
+};
+// Функция закрытия попапа кликом на олверлей
+const handlePopupCloseAnyPlace = (evt, popup) => {
+    if (evt.target === evt.currentTarget) {
+        closePopup(evt.target);
+    }
+}
+>>>>>>> develop
 
 
 // функции формы
 function handleProfileFormSubmit(evt) {
     evt.preventDefault();
-    profileName.textContent = popupInputUserName.value;
-    profileStatus.textContent = popupAboutMe.value;
+    profileName.textContent = userNameInput.value;
+    profileStatus.textContent = aboutMeInput.value;
     closePopup(popupTypeEdit)
 }
 
@@ -137,5 +176,8 @@ function handlePlaceFormSubmit(evt) {
 
 
 popupFormAdd.addEventListener('submit', handlePlaceFormSubmit);
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> develop
