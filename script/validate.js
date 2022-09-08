@@ -25,7 +25,6 @@ function isValid(form, input, config) {
         hideInputError(form, input, config)
     }
 }
-console.log(isValid)
 
 //Проверка на валидность инпутов
 function hasValidateInput(inputList) {
