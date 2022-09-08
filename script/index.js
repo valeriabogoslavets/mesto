@@ -7,11 +7,6 @@ const cardsTemplate = document.querySelector('#cards').content;
 // попап
 const popupTypeEdit = document.querySelector('.popup_type_edit');
 const popupTypeAdd = document.querySelector('.popup_type_add');
-<<<<<<< HEAD
-const popupInputUserName = document.querySelector('.popup__input_type_username');
-const popupAboutMe = document.querySelector('.popup__input_type_aboutme');
-=======
->>>>>>> develop
 const popupFormEdit = document.querySelector('.popup__form_edit');
 const userNameInput = popupFormEdit.querySelector('#username');
 const aboutMeInput = popupFormEdit.querySelector('#aboutme');
@@ -114,13 +109,8 @@ function openPopup(element) {
 };
 profileEditButton.addEventListener('click', function () {
     openPopup(popupTypeEdit);
-<<<<<<< HEAD
-    popupInputUserName.value = profileName.textContent;
-    popupAboutMe.value = profileStatus.textContent;
-=======
     userNameInput.value = profileName.textContent;
     aboutMeInput.value = profileStatus.textContent;
->>>>>>> develop
 });
 profileAddButton.addEventListener('click', function () {
     openPopup(popupTypeAdd);
@@ -131,8 +121,6 @@ function closePopup(element) {
     document.removeEventListener('keydown', handlePopupCloseKey)
 };
 
-<<<<<<< HEAD
-=======
 
 //функция закрытия попап через Escape
 const handlePopupCloseKey = (evt) => {
@@ -142,12 +130,12 @@ const handlePopupCloseKey = (evt) => {
     }
 };
 // Функция закрытия попапа кликом на олверлей
-const handlePopupCloseAnyPlace = (evt, popup) => {
+const handlePopupCloseAnyPlace = (evt) => {
     if (evt.target === evt.currentTarget) {
         closePopup(evt.target);
     }
 }
->>>>>>> develop
+
 
 
 // функции формы
@@ -176,8 +164,3 @@ function handlePlaceFormSubmit(evt) {
 
 
 popupFormAdd.addEventListener('submit', handlePlaceFormSubmit);
-<<<<<<< HEAD
-
-
-=======
->>>>>>> develop
