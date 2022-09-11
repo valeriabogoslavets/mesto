@@ -1,3 +1,4 @@
+
 const profileEditButton = document.querySelector('.profile__edit-btn');
 const profileAddButton = document.querySelector('.profile__add-btn');
 const profileName = document.querySelector('.profile__name');
@@ -16,7 +17,8 @@ const popupInputTypeLink = popupFormAdd.querySelector('#link');
 const popupTypeImage = document.querySelector('.popup_type_image');
 const popupImageElement = document.querySelector('.popup__image');
 const popupImageLable = document.querySelector('.popup__image-lable');
-const closeButtons = document.querySelectorAll('.popup__button-close');
+const popupButtonEdit = document.querySelector('.popup__button_edit');
+const popupButtonAdd = document.querySelector('.popup__button_add');
 
 const initialCards = [
     {
@@ -52,6 +54,7 @@ const validationConfig = {
     inputErrorClass: 'popup__input_type_error',
     errorClass: 'popup__error_visible'
 };
+
 
 // функция создания и добавления карточек
 
@@ -96,25 +99,26 @@ initialCards.forEach(createPlace);
 
 //слушатели событий
 
-closeButtons.forEach((button) => {
-    const popup = button.closest('.popup');
-    button.addEventListener('click', () => closePopup(popup));
-});
-
-
 function openPopup(element) {
     element.classList.add('popup_opened');
     element.addEventListener('click', handlePopupCloseAnyPlace)
     document.addEventListener('keydown', handlePopupCloseKey);
 };
+
 profileEditButton.addEventListener('click', function () {
     openPopup(popupTypeEdit);
     userNameInput.value = profileName.textContent;
     aboutMeInput.value = profileStatus.textContent;
+    setButtonInActive(popupButtonEdit)
+    
+   
 });
 profileAddButton.addEventListener('click', function () {
     openPopup(popupTypeAdd);
+    setButtonInActive(popupButtonAdd)
+
 });
+
 function closePopup(element) {
     element.classList.remove('popup_opened')
     element.removeEventListener('click', handlePopupCloseAnyPlace)
@@ -129,12 +133,17 @@ const handlePopupCloseKey = (evt) => {
         closePopup(popupActive);
     }
 };
-// Функция закрытия попапа кликом на олверлей
+// Функция закрытия попапа кликом на олверлей и крестик
 const handlePopupCloseAnyPlace = (evt) => {
-    if (evt.target === evt.currentTarget) {
-        closePopup(evt.target);
-    }
+    document.querySelectorAll('.popup').forEach( popup => {
+        popup.addEventListener('mousedown', (evt) => { 
+          if (evt.target === evt.currentTarget || evt.target.classList.contains('popup__button-close')) { 
+            closePopup(popup); 
+          }; 
+        }); 
+      }); 
 }
+
 
 
 
@@ -157,10 +166,10 @@ function handlePlaceFormSubmit(evt) {
         name: text,
         link: link
     }
-    evt.target.reset()
+    evt.target.reset();
     createPlace(objectPlace);
     closePopup(popupTypeAdd);
+
 };
-
-
 popupFormAdd.addEventListener('submit', handlePlaceFormSubmit);
+

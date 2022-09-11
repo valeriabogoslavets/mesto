@@ -31,23 +31,34 @@ function hasValidateInput(inputList) {
     })
 };
 
-//Кнопка
-function toggleButtonState(inputList, button, config) {
-    if (hasValidateInput(inputList)) {
-        button.classList.add(config.inactiveButtonClass)
-        button.disabled = true;
+//Кнопка 
+// функция добавления атрибута disabled
+function setButtonInActive(button) {
+    button.classList.add(validationConfig.inactiveButtonClass)
+   button.disabled = true;
+}
+// функция удаления атрибута disabled
+function setButtonActive(button)  {
+    button.classList.remove(validationConfig.inactiveButtonClass)
+   button.disabled = false;
+}
 
+
+
+function toggleButtonState(inputList, button) {
+    if (hasValidateInput(inputList)) {
+       setButtonInActive(button)
     } else {
-        button.classList.remove(config.inactiveButtonClass)
-        button.disabled = false;
+       setButtonActive(button)
     }
 };
+
 
 //Функция нахождения инпутов
 function setHendlers(form, config) {
     const inputList = Array.from(form.querySelectorAll(config.inputSelector));
     const button = form.querySelector(config.submitButtonSelector)
-    toggleButtonState(inputList, button, config);
+    toggleButtonState(inputList, button,config);
     inputList.forEach((input) => {
         input.addEventListener('input', () => {
             isValid(form, input, config);
@@ -57,13 +68,12 @@ function setHendlers(form, config) {
     });
 }
 //Функция нахождения форм
+
 function enableValidation(config) {
     const formList = Array.from(document.querySelectorAll(config.formSelector));
     formList.forEach((form) => {
-        form.addEventListener('submit', function (evt) {
-            evt.preventDefault();
-        });
         setHendlers(form, config)
     })
 }
+
 enableValidation(validationConfig);
