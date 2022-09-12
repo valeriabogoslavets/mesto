@@ -109,14 +109,13 @@ profileEditButton.addEventListener('click', function () {
     openPopup(popupTypeEdit);
     userNameInput.value = profileName.textContent;
     aboutMeInput.value = profileStatus.textContent;
-    setButtonInActive(popupButtonEdit)
-    
+    setButtonInActive(popupButtonEdit, validationConfig)
+ 
    
 });
 profileAddButton.addEventListener('click', function () {
     openPopup(popupTypeAdd);
-    setButtonInActive(popupButtonAdd)
-
+    setButtonInActive(popupButtonAdd, validationConfig)
 });
 
 function closePopup(element) {

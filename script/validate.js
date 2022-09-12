@@ -33,23 +33,23 @@ function hasValidateInput(inputList) {
 
 //Кнопка 
 // функция добавления атрибута disabled
-function setButtonInActive(button) {
-    button.classList.add(validationConfig.inactiveButtonClass)
+function setButtonInActive(button,config) {
+    button.classList.add(config.inactiveButtonClass)
    button.disabled = true;
 }
 // функция удаления атрибута disabled
-function setButtonActive(button)  {
-    button.classList.remove(validationConfig.inactiveButtonClass)
+function setButtonActive(button,config)  {
+    button.classList.remove(config.inactiveButtonClass)
    button.disabled = false;
 }
 
 
 
-function toggleButtonState(inputList, button) {
+function toggleButtonState(inputList, button, config) {
     if (hasValidateInput(inputList)) {
-       setButtonInActive(button)
+       setButtonInActive(button,config)
     } else {
-       setButtonActive(button)
+       setButtonActive(button,config)
     }
 };
 
