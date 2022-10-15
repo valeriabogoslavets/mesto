@@ -16,15 +16,15 @@ const popupFormEdit = document.querySelector('.popup__form_edit');
 const userNameInput = popupFormEdit.querySelector('#username');
 const aboutMeInput = popupFormEdit.querySelector('#aboutme');
 const popupFormAdd = document.querySelector('.popup__form_add');
-const inputTypePlace = popupFormAdd.querySelector('#place');
-const inputTypeLink = popupFormAdd.querySelector('#link');
+const popupInputTypePlace = popupFormAdd.querySelector('#place');
+const popupInputTypeLink = popupFormAdd.querySelector('#link');
 const popupTypeImage = document.querySelector('.popup_type_image');
 const popupImageElement = document.querySelector('.popup__image');
 const popupImageLable = document.querySelector('.popup__image-lable');
 
   // клонирование карточки
   const cloneCards = initialCards.forEach((el) => {
-    const card = new Card(el, '.template', heandleOpenPopupImage)
+    const card = new Card(el, 'template', heandleOpenPopupImage)
    const cardElement = card.generateCard()
    document.querySelector('.elements').prepend(cardElement)
 })
@@ -96,10 +96,10 @@ function handleProfileFormSubmit() {
 }
 function handlePlaceFormSubmit() {
     const objectPlace = {
-        name: inputTypePlace.value,
-        link: inputTypeLink.value
+        name: popupInputTypePlace.value,
+        link: popupInputTypeLink.value
     }
-const place = new Card(objectPlace, '.template', heandleOpenPopupImage)
+const place = new Card(objectPlace, 'template', heandleOpenPopupImage)
 cards.prepend(place.generateCard())
 closePopup(popupTypeAdd)
 popupFormAdd.reset()

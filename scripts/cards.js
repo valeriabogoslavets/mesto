@@ -33,7 +33,9 @@ export class  Card {
     _hendleBigImage() {
         this._heandleOpenPopupImage(this._name, this._link)
     }
-
+    _hendleLikeImage() {
+        this._likeButton.classList.toggle('.place__button-like_active')
+    }
 
     _setEventListeners() {
         this._likeButton = this._element.querySelector('.place__button-like')
@@ -51,8 +53,5 @@ export class  Card {
             this._hendleBigImage()
         });
 
-    }
-    _hendleLikeImage() {
-        this._likeButton.classList.toggle('.place__button-like_active')
     }
 }
