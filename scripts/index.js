@@ -16,25 +16,22 @@ const popupFormEdit = document.querySelector('.popup__form_edit');
 const userNameInput = popupFormEdit.querySelector('#username');
 const aboutMeInput = popupFormEdit.querySelector('#aboutme');
 const popupFormAdd = document.querySelector('.popup__form_add');
-const popupInputTypePlace = popupFormAdd.querySelector('#place');
-const popupInputTypeLink = popupFormAdd.querySelector('#link');
+const inputTypePlace = popupFormAdd.querySelector('#place');
+const inputTypeLink = popupFormAdd.querySelector('#link');
 const popupTypeImage = document.querySelector('.popup_type_image');
 const popupImageElement = document.querySelector('.popup__image');
 const popupImageLable = document.querySelector('.popup__image-lable');
-const popupButtonEdit = document.querySelector('.popup__button_edit');
-const popupButtonAdd = document.querySelector('.popup__button_add');
-  // создание карточки
-function  createPlace(element) {
-return new Card(element, '.cards', heandleOpenPopupImage,)
- .generateCard();
-}
-// добавление карточки на страницу 
 
-const rend = initialCards.forEach((element) => {
-    const card = new Card (element, '.cards', heandleOpenPopupImage)
-    const cardElement = card.generateCard()
-    cards.prepend(cardElement)
+  // клонирование карточки
+  const cloneCards = initialCards.forEach((el) => {
+    const card = new Card(el, '.template', heandleOpenPopupImage)
+   const cardElement = card.generateCard()
+   document.querySelector('.elements').prepend(cardElement)
 })
+
+
+
+// добавление карточки на страницу
 
 
 //валидация
@@ -83,7 +80,7 @@ const handlePopupCloseAnyPlace = (evt) => {
       }); 
 }
 
- function heandleOpenPopupImage(name, link) {
+ function heandleOpenPopupImage(name, link ) {
     popupImageElement.src = link;
     popupImageElement.alt = name;
     popupImageLable.textContent = name;
@@ -99,11 +96,11 @@ function handleProfileFormSubmit() {
 }
 function handlePlaceFormSubmit() {
     const objectPlace = {
-        name: popupInputTypePlace.value,
-        link: popupInputTypeLink.value
+        name: inputTypePlace.value,
+        link: inputTypeLink.value
     }
-
-cards.prepend(createPlace(objectPlace))
+const place = new Card(objectPlace, '.template', heandleOpenPopupImage)
+cards.prepend(place.generateCard())
 closePopup(popupTypeAdd)
 popupFormAdd.reset()
 };
