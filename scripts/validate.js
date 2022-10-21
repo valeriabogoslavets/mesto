@@ -37,25 +37,27 @@ export class FormValidator {
             this._hideInputError(input)
         }
     };
-    disabledButton() {
+    //добавление дисаблед
+    _setButtonInActive() {
         this._button.classList.add(this._inactiveButtonClass)
         this._button.disabled = true;
     }
-
-    removeButton() {
+    _setButtonActive() {
         this._button.classList.remove(this._inactiveButtonClass)
         this._button.disabled = false;
     }
 
+
+
     _toggleButtonState() {
         if (this._hasValidateInput()) {
-           this.disabledButton()
-           
+            this._setButtonInActive()
+
         } else {
-           this.removeButton()
-           
+            this._setButtonActive()
         }
     }
+
     _setEventListeners() {
         this._toggleButtonState()
         this._inputList.forEach((input) => {
@@ -67,12 +69,17 @@ export class FormValidator {
     }
 
     enValidation() {
-        this._form.addEventListener('submit', (evt) => {
-            evt.preventDefault();
-            evt.target.reset();
+        this._toggleButtonState()
+
+        this._inputList.forEach((input) => {
+            input.addEventListener('input', () => {
+                this._isValid(input)
+
+                this._toggleButtonState()
+            })
         })
-        this._setEventListeners();
     }
+
     resValidation() {
         this._inputList.forEach((input) => {
             this._hideInputError(input)

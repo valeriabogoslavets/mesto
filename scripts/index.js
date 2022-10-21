@@ -16,29 +16,23 @@ const popupFormEdit = document.querySelector('.popup__form_edit');
 const userNameInput = popupFormEdit.querySelector('#username');
 const aboutMeInput = popupFormEdit.querySelector('#aboutme');
 const popupFormAdd = document.querySelector('.popup__form_add');
-const popupInputTypePlace = popupFormAdd.querySelector('.popup__input_type_place');
-const popupInputTypeLink = popupFormAdd.querySelector('.popup__input_type_link');
+const popupTypePlace = popupFormAdd.querySelector('.popup__input_type_place');
+const popupTypeLink = popupFormAdd.querySelector('.popup__input_type_link');
 const popupTypeImage = document.querySelector('.popup_type_image');
 const popupImageElement = document.querySelector('.popup__image');
 const popupImageLable = document.querySelector('.popup__image-lable');
-
-
-function renderElement(name,link, templateSelector, heandleOpenPopupImage) {
-    const card = new Card(name,link, templateSelector, heandleOpenPopupImage) 
-    const cardElement = card.generateCard()
-    return (cardElement);
+// создание карточки
+function cardElement(element) {
+    const newCard = new Card(element, '.template', heandleOpenPopupImage)
+    return newCard.generateCard()
 }
+
+
 initialCards.forEach((item) => {
-    const cardElement = renderElement(item.name, item.link, '.template', heandleOpenPopupImage)
-    cards.append(cardElement);
+    const card = cardElement(item)
+    cards.prepend(card);
 })
-function createCard (evt) {
-    evt.preventDefault()
-    const cardElement = renderElement( popupInputTypePlace.value,popupInputTypeLink.value,'.template',heandleOpenPopupImage)
-cards.prepend(cardElement)
-closePopup(popupTypeAdd)
-popupFormAdd.reset()
-}
+
 //валидация
 const validationConfig = {
     formSelector: '.popup__form',
@@ -53,6 +47,9 @@ const formEditValid = new FormValidator(validationConfig, popupFormEdit)
 const formAddValid = new FormValidator(validationConfig, popupFormAdd)
 formAddValid.enValidation()
 formEditValid.enValidation()
+
+
+
 
 //открытие попапа
 function openPopup(element) {
@@ -85,40 +82,48 @@ const handlePopupCloseAnyPlace = (evt) => {
     });
 }
 
-function heandleOpenPopupImage(name, link) {
-    popupImageElement.src = link;
-    popupImageElement.alt = name;
-    popupImageLable.textContent = name;
-    openPopup(popupTypeImage);
-}
-
-
-
+//функция редактирования профиля
 function handleProfileFormSubmit(evt) {
     evt.preventDefault()
     profileName.textContent = userNameInput.value;
     profileStatus.textContent = aboutMeInput.value;
     closePopup(popupTypeEdit)
-
-}
-function popupOpenButton() { 
-const buttonSave = popupTypeEdit.querySelector('.popup__button_edit')
-openPopup(popupTypeEdit); 
-userNameInput.value = profileName.textContent;
-aboutMeInput.value = profileStatus.textContent;
-formEditValid.removeButton(buttonSave)
 }
 
-
+//функция добавления карточки 
+function handlePlaceFormSubmit(evt) {
+    evt.preventDefault()
+    const text = popupTypePlace.value;
+    const link = popupTypeLink.value;
+    const objectPlace = {
+        name: text,
+        link: link
+    }
+    cards.prepend(cardElement(objectPlace))
+    closePopup(popupTypeAdd);
+    popupFormAdd.reset()
+}
+function heandleOpenPopupImage(name, link) {
+    popupImageElement.alt = name;
+    popupImageElement.src = link;
+    popupImageLable.textContent = name;
+    openPopup(popupTypeImage);
+}
 //слушатели событий
-profileEditButton.addEventListener('click', popupOpenButton);
+profileEditButton.addEventListener('click', () => {
+    openPopup(popupTypeEdit);
+    userNameInput.setAttribute('value', profileName.textContent)
+    aboutMeInput.setAttribute('value', profileStatus.textContent)
+    formEditValid.resValidation();
+});
 
 profileAddButton.addEventListener('click', () => {
-    openPopup(popupTypeAdd);
-});
+    openPopup(popupTypeAdd)
+    formAddValid.resValidation()
+})
 // функции формы
 popupFormEdit.addEventListener('submit', handleProfileFormSubmit);
-popupFormAdd.addEventListener('submit',createCard);
+popupFormAdd.addEventListener('submit', handlePlaceFormSubmit);
 
 
 export { heandleOpenPopupImage }
