@@ -13,7 +13,21 @@ export class Card {
         return cardElem
     }
 
+<<<<<<< HEAD
 
+=======
+    generateCard() {
+        this._element = this._getTemplate();
+        this._setEventListeners()
+        this._image = this._element.querySelector('.place__image') 
+        this._title = this._element.querySelector('.place__title') 
+        this._image.src = this._link;
+        this._image.setAttribute('alt', `${this._title}`)
+        this._title.textContent = this._name;
+
+        return this._element;
+    }
+>>>>>>> hotfix/card
     _hendleDeleteCard() {
         this._element.remove();
 

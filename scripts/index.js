@@ -2,8 +2,6 @@ import { Card } from "./cards.js";
 import { FormValidator } from "./validate.js";
 import { initialCards } from "./initial-cards.js";
 
-
-
 const profileEditButton = document.querySelector('.profile__edit-btn');
 const profileAddButton = document.querySelector('.profile__add-btn');
 const profileName = document.querySelector('.profile__name');
@@ -26,8 +24,11 @@ function cardElement(element) {
     const newCard = new Card(element, '.template', heandleOpenPopupImage)
     return newCard.generateCard()
 }
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> hotfix/card
 initialCards.forEach((item) => {
     const card = cardElement(item)
     cards.prepend(card);
@@ -63,7 +64,6 @@ function closePopup(element) {
     element.removeEventListener('click', handlePopupCloseAnyPlace)
     document.removeEventListener('keydown', handlePopupCloseKey)
 };
-
 //функция закрытия попап через Escape
 const handlePopupCloseKey = (evt) => {
     if (evt.key === 'Escape') {
@@ -89,7 +89,10 @@ function handleProfileFormSubmit(evt) {
     profileStatus.textContent = aboutMeInput.value;
     closePopup(popupTypeEdit)
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> hotfix/card
 //функция добавления карточки 
 function handlePlaceFormSubmit(evt) {
     evt.preventDefault()
