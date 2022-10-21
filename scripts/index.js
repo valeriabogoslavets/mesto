@@ -2,8 +2,6 @@ import { Card } from "./cards.js";
 import { FormValidator } from "./validate.js";
 import { initialCards } from "./initial-cards.js";
 
-
-
 const profileEditButton = document.querySelector('.profile__edit-btn');
 const profileAddButton = document.querySelector('.profile__add-btn');
 const profileName = document.querySelector('.profile__name');
@@ -16,23 +14,20 @@ const popupFormEdit = document.querySelector('.popup__form_edit');
 const userNameInput = popupFormEdit.querySelector('#username');
 const aboutMeInput = popupFormEdit.querySelector('#aboutme');
 const popupFormAdd = document.querySelector('.popup__form_add');
-const popupInputTypePlace = popupFormAdd.querySelector('#place');
-const popupInputTypeLink = popupFormAdd.querySelector('#link');
+const popupTypePlace = popupFormAdd.querySelector('.popup__input_type_place');
+const popupTypeLink = popupFormAdd.querySelector('.popup__input_type_link');
 const popupTypeImage = document.querySelector('.popup_type_image');
 const popupImageElement = document.querySelector('.popup__image');
 const popupImageLable = document.querySelector('.popup__image-lable');
-
-  // клонирование карточки
-  const cloneCards = initialCards.forEach((el) => {
-    const card = new Card(el, 'template', heandleOpenPopupImage)
-   const cardElement = card.generateCard()
-   document.querySelector('.elements').prepend(cardElement)
+// создание карточки
+function cardElement(element) {
+    const newCard = new Card(element, '.template', heandleOpenPopupImage)
+    return newCard.generateCard()
+}
+initialCards.forEach((item) => {
+    const card = cardElement(item)
+    cards.prepend(card);
 })
-
-
-
-// добавление карточки на страницу
-
 
 //валидация
 const validationConfig = {
@@ -61,7 +56,6 @@ function closePopup(element) {
     element.removeEventListener('click', handlePopupCloseAnyPlace)
     document.removeEventListener('keydown', handlePopupCloseKey)
 };
-
 //функция закрытия попап через Escape
 const handlePopupCloseKey = (evt) => {
     if (evt.key === 'Escape') {
@@ -71,53 +65,56 @@ const handlePopupCloseKey = (evt) => {
 };
 // Функция закрытия попапа кликом на олверлей и крестик
 const handlePopupCloseAnyPlace = (evt) => {
-    document.querySelectorAll('.popup').forEach( popup => {
-        popup.addEventListener('mousedown', (evt) => { 
-          if (evt.target === evt.currentTarget || evt.target.classList.contains('popup__button-close')) { 
-            closePopup(popup); 
-          }; 
-        }); 
-      }); 
+    document.querySelectorAll('.popup').forEach(popup => {
+        popup.addEventListener('mousedown', (evt) => {
+            if (evt.target === evt.currentTarget || evt.target.classList.contains('popup__button-close')) {
+                closePopup(popup);
+            };
+        });
+    });
 }
 
- function heandleOpenPopupImage(name, link ) {
-    popupImageElement.src = link;
-    popupImageElement.alt = name;
-    popupImageLable.textContent = name;
-    openPopup(popupTypeImage);
-}
-
-
-
-function handleProfileFormSubmit() {
+//функция редактирования профиля
+function handleProfileFormSubmit(evt) {
+    evt.preventDefault()
     profileName.textContent = userNameInput.value;
     profileStatus.textContent = aboutMeInput.value;
     closePopup(popupTypeEdit)
 }
-function handlePlaceFormSubmit() {
+//функция добавления карточки 
+function handlePlaceFormSubmit(evt) {
+    evt.preventDefault()
+    const text = popupTypePlace.value;
+    const link = popupTypeLink.value;
     const objectPlace = {
-        name: popupInputTypePlace.value,
-        link: popupInputTypeLink.value
+        name: text,
+        link: link
     }
-const place = new Card(objectPlace, 'template', heandleOpenPopupImage)
-cards.prepend(place.generateCard())
-closePopup(popupTypeAdd)
-popupFormAdd.reset()
-};
-
-
+    cards.prepend(cardElement(objectPlace))
+    closePopup(popupTypeAdd);
+    popupFormAdd.reset()
+}
+function heandleOpenPopupImage(name, link) {
+    popupImageElement.alt = name;
+    popupImageElement.src = link;
+    popupImageLable.textContent = name;
+    openPopup(popupTypeImage);
+}
 //слушатели событий
 profileEditButton.addEventListener('click', () => {
     openPopup(popupTypeEdit);
-    userNameInput.value = profileName.textContent;
-    aboutMeInput.value = profileStatus.textContent;
+    userNameInput.setAttribute('value', profileName.textContent)
+    aboutMeInput.setAttribute('value', profileStatus.textContent)
+    formEditValid.resValidation();
 });
-profileAddButton.addEventListener('click', () =>{
-    openPopup(popupTypeAdd);
-});
+
+profileAddButton.addEventListener('click', () => {
+    openPopup(popupTypeAdd)
+    formAddValid.resValidation()
+})
 // функции формы
 popupFormEdit.addEventListener('submit', handleProfileFormSubmit);
 popupFormAdd.addEventListener('submit', handlePlaceFormSubmit);
 
 
-export { heandleOpenPopupImage}
+export { heandleOpenPopupImage }

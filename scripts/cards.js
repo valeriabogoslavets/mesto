@@ -13,7 +13,6 @@ export class  Card {
         return cardElem
     }
 
-
     generateCard() {
         this._element = this._getTemplate();
         this._setEventListeners()
@@ -25,7 +24,6 @@ export class  Card {
 
         return this._element;
     }
-
     _hendleDeleteCard() {
         this._element.remove();
     }
