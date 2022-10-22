@@ -65,6 +65,7 @@ export class FormValidator {
             })
         })
     }
+    
     resValidation() {
         this._inputList.forEach((input) => {
             this._hideInputError(input)
