@@ -1,6 +1,7 @@
-import { Card } from "./cards.js";
-import { FormValidator } from "./validate.js";
+
+import { FormValidator } from "./Validate.js";
 import { initialCards } from "./initial-cards.js";
+import {Card} from './Сards.js'
 
 const profileEditButton = document.querySelector('.profile__edit-btn');
 const profileAddButton = document.querySelector('.profile__add-btn');
@@ -20,17 +21,14 @@ const popupTypeImage = document.querySelector('.popup_type_image');
 const popupImageElement = document.querySelector('.popup__image');
 const popupImageLable = document.querySelector('.popup__image-lable');
 // создание карточки
-function cardElement(element) {
+function createCard(element) {
     const newCard = new Card(element, '.template', heandleOpenPopupImage)
     return newCard.generateCard()
 }
-<<<<<<< HEAD
 
 
-=======
->>>>>>> hotfix/card
 initialCards.forEach((item) => {
-    const card = cardElement(item)
+    const card = createCard(item)
     cards.prepend(card);
 })
 
@@ -46,8 +44,8 @@ const validationConfig = {
 
 const formEditValid = new FormValidator(validationConfig, popupFormEdit)
 const formAddValid = new FormValidator(validationConfig, popupFormAdd)
-formAddValid.enValidation()
-formEditValid.enValidation()
+formAddValid.enableValidation()
+formEditValid.enableValidation()
 
 
 
@@ -89,10 +87,6 @@ function handleProfileFormSubmit(evt) {
     profileStatus.textContent = aboutMeInput.value;
     closePopup(popupTypeEdit)
 }
-<<<<<<< HEAD
-
-=======
->>>>>>> hotfix/card
 //функция добавления карточки 
 function handlePlaceFormSubmit(evt) {
     evt.preventDefault()
@@ -102,7 +96,7 @@ function handlePlaceFormSubmit(evt) {
         name: text,
         link: link
     }
-    cards.prepend(cardElement(objectPlace))
+    cards.prepend(createCard(objectPlace))
     closePopup(popupTypeAdd);
     popupFormAdd.reset()
 }
@@ -115,8 +109,8 @@ function heandleOpenPopupImage(name, link) {
 //слушатели событий
 profileEditButton.addEventListener('click', () => {
     openPopup(popupTypeEdit);
-    userNameInput.setAttribute('value', profileName.textContent)
-    aboutMeInput.setAttribute('value', profileStatus.textContent)
+    userNameInput.value = profileName.textContent;
+    aboutMeInput.value = profileStatus.textContent
     formEditValid.resValidation();
 });
 
