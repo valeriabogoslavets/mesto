@@ -15,7 +15,7 @@
     </header>
     <main class="content">
         <section class="profile">
-            <img class="profile__photo" src="./images/image.jpg" alt="Фото в профиле пользователя">
+            <img class="profile__photo" src="./images/photo-profile.jpg" alt="Фото в профиле пользователя">
             <div class="profile__info">
                 <div class="profile__form">
                     <h1 class="profile__name">Жак-Ив Кусто</h1>
@@ -35,10 +35,10 @@
         <div class="popup__container">
             <h2 class="popup__title">Редактировать профиль</h2>
             <form class="popup__form popup__form_edit" name="Name" novalidate>
-                <input id="username" type="text" class="popup__input" name="username" minlength="2" maxlength="40"
+                <input id="username" type="text" class="popup__input popup__input_type_name" name="username" minlength="2" maxlength="40"
                     required>
                 <span class="popup__error username-error"></span>
-                <input id="aboutme" type="text" class="popup__input" name="aboutnme" minlength="2" maxlength="200"
+                <input id="aboutme" type="text" class="popup__input popup__input_type_aboutme" name="aboutme" minlength="2" maxlength="200"
                     required>
                 <span class="popup__error aboutme-error"></span>
                 <button class="popup__button popup__button_edit" type="submit">Сохранить</button>
@@ -80,7 +80,7 @@
             </div>
         </div>
     </template>
-    <script src="./scripts/index.js" type="module"></script>
+    <script src="./pages/index.js" type="module"></script>
 </body>
 
 </html>
