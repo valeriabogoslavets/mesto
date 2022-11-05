@@ -3,8 +3,8 @@ import './index.css';
 import Section from "../components/Section";
 import FormValidator from "../components/FormValidator.js";
 import Card from "../components/Сard.js";
-import PopupWithForm from "../PopupWithForm";
-import PopupWithImage from "../PopupWithImage.js";
+import PopupWithForm from "../components/PopupWithForm.js";
+import PopupWithImage from "../components/PopupWithImage.js";
 import UserInfo from "../components/UserInfo.js";
 import {
     validationConfig,
