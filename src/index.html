@@ -5,17 +5,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./pages/index.css">
     <title>Mesto Россия</title>
 </head>
 
 <body class="page">
     <header class="header">
-        <img class="header__logo" src="./images/logo.svg" alt="Логотип с названием сайта Mesto Россия">
+        <img class="header__logo" src="<%=require('./images/logo.svg')%>" alt="Логотип с названием сайта Mesto Россия">
     </header>
     <main class="content">
         <section class="profile">
-            <img class="profile__photo" src="./images/photo-profile.jpg" alt="Фото в профиле пользователя">
+            <img class="profile__photo" src="<%=require('./images/photo-profile.jpg')%>" alt="Фото в профиле пользователя">
             <div class="profile__info">
                 <div class="profile__form">
                     <h1 class="profile__name">Жак-Ив Кусто</h1>
@@ -80,7 +79,6 @@
             </div>
         </div>
     </template>
-    <script src="./pages/index.js" type="module"></script>
 </body>
 
 </html>
