@@ -52,10 +52,10 @@ const formAddValid = new FormValidator(validationConfig, popupFormAdd)
 
 
 function clickProfileEditButton() {
-    popupTypeEdit.open()
     const userInfoObject = userInfo.getUserInfo()
     userNameInput.value = userInfoObject.username;
     aboutMeInput.value = userInfoObject.aboutme;
+    popupTypeEdit.open()
 }
 
 function clickProfileAddButton() {

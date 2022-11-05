@@ -6,10 +6,9 @@ export default class PopupWithImage extends Popup {
         this._popupLable = this._popup.querySelector('.popup__image-lable')
     }
     open(name,link) {
-        super.open();
-       
         this._popupImage.src = link;
         this._popupImage.alt = name;
         this._popupLable.textContent = name;
+        super.open();
     }
 }
