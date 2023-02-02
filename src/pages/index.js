@@ -49,6 +49,10 @@ api.getInitialCards()
         sectionCard.renderItems(cards)
 
     })
+    .catch((err) => {
+        console.log(`Ошибка: ${err}`);
+    })
+
 
 
 function createCard(data) {
