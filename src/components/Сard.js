@@ -1,11 +1,11 @@
 
 export default class Card {
-    constructor(data, templateSelector, handleCardOpen, getUserId, handlePutLike, handleDeleteLike, handleDeleteClick) {
+    constructor(data,templateSelector, userId, handleCardOpen, handlePutLike, handleDeleteLike, handleDeleteClick) {
         this._name = data.name;
         this._link = data.link;
         this._likes = data.likes
         this._cardId = data._id
-        this._getUserId = getUserId
+        this._userId = userId
         this._owner = data.owner
         this._templateSelector = templateSelector;
         this._handleCardOpen = handleCardOpen;
@@ -34,11 +34,11 @@ export default class Card {
         this._image.alt = this._name;
         this._likeNumber.textContent = this._likes.length
 
-        if ((this._owner._id !== this._getUserId())) {
+        if ((this._userId !== this._owner._id )) {
             this._deleteButton.remove()
         }
         if (this._likes.some((like) => {
-            return like._id === this._getUserId()
+            return like._id === this._userId
           })) {
             this._likeButton.classList.add('place__button-like_active');
           };
@@ -72,7 +72,7 @@ this._likeButton.classList.toggle('place__button-like_active')
         });
 
         this._deleteButton.addEventListener('click', () => {
-            this._handleDeleteClick(this._cardId, this)
+            this._handleDeleteClick(this,this._cardId)
         });
         this._image.addEventListener('click', () => {
             this._handleBigImage()

@@ -19,7 +19,7 @@ import {
     profilePhoto,
     popupFormAvatar
 } from "../utils/constants.js"
-
+ let userId
 const api = new Api({
     baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-58',
     headers: {
@@ -34,32 +34,24 @@ const userInfo = new UserInfo({
     avatarSelector: '.profile__avatar'
 })
 
-api.getUserInfo()
-    .then((data) => {
-        userInfo.setUserInfo(data)
-        userInfo.setUserId(data)
-
-    })
-    .catch((err) => {
-        console.log(`Ошибка: ${err}`);
-    })
-
-api.getInitialCards()
-    .then((cards) => {
-        sectionCard.renderItems(cards)
-
-    })
-    .catch((err) => {
-        console.log(`Ошибка: ${err}`);
-    })
+Promise.all([api.getUserInfo(), api.getInitialCards()])
+.then(([data, cards]) => {
+    userId = data._id
+    userInfo.setUserInfo(data)
+    userInfo.setUserId(data)
+    sectionCard.renderItems(cards)
+})
+.catch((err) => {
+    console.log(`Ошибка: ${err}`);
+})
 
 
 
 function createCard(data) {
-    const newCard = new Card(data, '.template', popupImage.open.bind(popupImage), userInfo.getUserId.bind(userInfo), handlePutLike, handleDeleteLike, handleDeleteClick)
+    const newCard = new Card(data, '.template',  userId, popupImage.open.bind(popupImage), handlePutLike, handleDeleteLike, handleDeleteClick)
     return newCard.generateCard()
 }
-const sectionCard = new Section({
+    const sectionCard = new Section({
     renderer: (item) => sectionCard.addItem(createCard(item))
 },
     '.elements'
@@ -103,17 +95,18 @@ const handleAvatarFormSubmit = formValues =>
         popupTypeAvatar.close()
     })
         .catch(err => console.log(`Ошибка: ${err}`))
-        .finally(() => popupTypeAdd.isLoading(false))
+        .finally(() => popupTypeAvatar.isLoading(false))
 
 
 function handleDeleteClick(card, cardId) {
     popupTypeConfirm.open(card, cardId)
 }
-function handleConfirmationClick(cardId, card) {
+function handleConfirmationClick(card, cardId) {
     api.deleteCard(cardId)
         .then(() => {
-            card.handleDeleteCard();
+            card.handleDeleteCard()
             popupTypeConfirm.close()
+    
         })
         .catch(err => console.log(`Ошибка: ${err}`))
 }
@@ -153,7 +146,7 @@ formAvatarValid.enableValidation();
 popupImage.setEventListeners();
 popupTypeEdit.setEventListeners();
 popupTypeAdd.setEventListeners();
-popupTypeConfirm.setEventListeners();
+popupTypeConfirm.setEventListeners()
 popupTypeAvatar.setEventListeners()
 profileEditButton.addEventListener('click', clickProfileEditButton);
 profileAddButton.addEventListener('click', clickProfileAddButton);

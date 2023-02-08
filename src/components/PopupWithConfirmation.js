@@ -9,9 +9,10 @@ export default class PopupWithConfirmation extends Popup {
     super.open()
     this._card = card
     this._cardId = cardId
+    
  }
  setEventListeners() {
-    super.setEventListeners
+    super.setEventListeners()
     this._button.addEventListener('click', () => {
         this._handleConfirmationClick(this._card, this._cardId)
     })
